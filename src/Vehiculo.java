@@ -4,9 +4,14 @@ public class Vehiculo {
     private String modelo;
     private double precioAlquiler;
 
-    public Vehiculo(String marca, String modelo) {
+    public Vehiculo(String marca, String modelo, double precioAlquiler) {
         this.marca = marca;
         this.modelo = modelo;
+
+        if(precioAlquiler < 0.0){
+            throw new IllegalArgumentException("Rent price must be >= 0.0");
+        }
+        this.precioAlquiler = precioAlquiler;
     }
 
     public void setPrecioAlquiler(double precioAlquiler){
