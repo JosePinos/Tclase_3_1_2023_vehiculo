@@ -34,7 +34,9 @@ public class Main {
 
         imprimirLista((ArrayList)listaVehiculos );
         */
+        Scanner sc = new Scanner(System.in);
         List listaVehiculos = new ArrayList();
+
 
         int opcion = 1;
         while(opcion != 4){
@@ -43,25 +45,45 @@ public class Main {
             switch(opcion){
 
                 case 1:{
+                    System.out.println("\n\tAGREGAR VEHÍCULO");
+                    int tipo_vehiculo;
+                    System.out.println("1) agregar vehículo");
+                    System.out.println("2) agregar autobus");
+                    System.out.println("3) agregar turismo");
+                    System.out.println(">");
+                    tipo_vehiculo = sc.nextInt();
+
+                    if(tipo_vehiculo == 1){
+
+                    }else if (tipo_vehiculo == 2){
+
+                    }else if(tipo_vehiculo == 3){
+
+                    }else{
+                        System.out.println("ESE VEHÍCULO NO EXISTE");
+                    }
+
 
                 }
                 break;
 
 
                 case 2:{
-
+                    System.out.println("\n\tELIMINAR VEHÍCULO");
                 }
                 break;
 
 
                 case 3:{
+                    System.out.println("\n\tMOSTRAR VEHÍCULOS");
 
+                    imprimirLista((ArrayList)listaVehiculos );
                 }
                 break;
 
 
                 case 4:{
-
+                    System.out.println("\n\tGRACIAS POR SU PREFERENCIA");
                 }
                 break;
 
