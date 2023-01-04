@@ -40,24 +40,52 @@ public class Main {
 
         int opcion = 1;
         while(opcion != 4){
-            menuVehiculos();
+            opcion = menuVehiculos();
             System.out.println("\n");
             switch(opcion){
 
                 case 1:{
+                    String marca_aux, modelo_aux;     double precio_alquiler;
+
+                    //**************************************************************
                     System.out.println("\n\tAGREGAR VEHÍCULO");
                     int tipo_vehiculo;
                     System.out.println("1) agregar vehículo");
                     System.out.println("2) agregar autobus");
                     System.out.println("3) agregar turismo");
-                    System.out.println(">");
+                    System.out.print(">");
                     tipo_vehiculo = sc.nextInt();
+                    sc.nextLine();//limpio del caracter sobrante
+                    //**************************************************************
+
+                    System.out.print("\nIngrese la marca del vehículo: ");
+                    marca_aux = sc.nextLine();
+
+                    System.out.print("\nIngrese el modelo del vehículo: ");
+                    modelo_aux = sc.nextLine();
+
+                    System.out.print("\nIngrese el precio del vehículo: ");
+                    precio_alquiler = sc.nextDouble();
+                    //**************************************************************
+
 
                     if(tipo_vehiculo == 1){
-
+                        listaVehiculos.add( new Vehiculo(marca_aux, modelo_aux, precio_alquiler) );
                     }else if (tipo_vehiculo == 2){
+                        int numPlazas_aux=0;
+
+                        System.out.print("\nIngrese el número de plazas del autobus: ");
+                        numPlazas_aux = sc.nextInt();
+
+                        listaVehiculos.add( new Autobus(marca_aux, modelo_aux, precio_alquiler, numPlazas_aux) );
 
                     }else if(tipo_vehiculo == 3){
+                        int numPuertas_aux = 0;
+
+                        System.out.print("\nIngrese el número de puertas del turismo: ");
+                        numPuertas_aux = sc.nextInt();
+
+                        listaVehiculos.add( new Turismo(marca_aux, modelo_aux, precio_alquiler, numPuertas_aux) );
 
                     }else{
                         System.out.println("ESE VEHÍCULO NO EXISTE");
@@ -65,13 +93,24 @@ public class Main {
 
 
                 }
-                break;
+                break;//FIN DEL CASE 1
 
 
                 case 2:{
                     System.out.println("\n\tELIMINAR VEHÍCULO");
+                    System.out.println("Lista de vehículos para posible eliminación (solo 1 cada vez)");
+                    imprimirLista((ArrayList)listaVehiculos );          System.out.println();
+
+                    int index = 0;
+                    System.out.print("Ingrese el índice del vehículo que desea eliminar: ");
+                    index = sc.nextInt();
+
+                    listaVehiculos.remove(index);
+
+                    System.out.println("\nRESULTADO TRAS LA ELIMINACIÓN");
+                    imprimirLista((ArrayList)listaVehiculos );
                 }
-                break;
+                break;//FIN DEL CASE 2
 
 
                 case 3:{
@@ -79,7 +118,7 @@ public class Main {
 
                     imprimirLista((ArrayList)listaVehiculos );
                 }
-                break;
+                break;//FIN DEL CASE 3
 
 
                 case 4:{
@@ -92,9 +131,13 @@ public class Main {
 
     }
 
+
+
+
     private static void imprimirLista(ArrayList lista){
         for(int i = 0; i < lista.size(); i++){
             Vehiculo v = (Vehiculo)lista.get(i);
+            System.out.println("\tVehículo: " + (i+1));
             v.imprimirAtributos();
             System.out.println();
         }
@@ -108,7 +151,7 @@ public class Main {
         System.out.println("2) Eliminar Vehículo");
         System.out.println("3) Mostrar Vehículos");
         System.out.println("4) SALIR");
-        System.out.println(">");
+        System.out.print(">");
         Scanner sc = new Scanner(System.in);
         opcion = sc.nextInt();
 

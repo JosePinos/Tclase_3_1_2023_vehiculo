@@ -24,7 +24,7 @@ public class Vehiculo {
 
 
     public void imprimirAtributos(){
-        System.out.println("Modelo: " + modelo + "\nMarca: " + marca + "\tPrecio Alquiler: " + precioAlquiler);
+        System.out.println("Modelo: " + modelo + "\nMarca: " + marca + "\nPrecio Alquiler: " + precioAlquiler);
     }
 
 
